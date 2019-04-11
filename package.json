@@ -1,15 +1,25 @@
 {
   "name": "chatbruh",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4",
     "socket.io": "^2.2.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/priyansha9998/chatbruh.git"
+  },
+  "bugs": {
+    "url": "https://github.com/priyansha9998/chatbruh/issues"
+  },
+  "homepage": "https://github.com/priyansha9998/chatbruh#readme",
+  "description": ""
 }

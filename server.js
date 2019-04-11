@@ -12,10 +12,12 @@ io.on('connection', (socket) => {
     console.log('Socket connected ' + socket.id)
 
     socket.on('send_message', (data) =>{
-        console.log(data)
         //broadcast.emit('new message', data); send to everybody but me
-        io.emit('new_message', data)
-
+        io.emit('new_message', {
+            username : data.username,
+            message : data.message
+        })
+        
     })
 })
 
