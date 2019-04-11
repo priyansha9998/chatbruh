@@ -6,27 +6,20 @@
 
 $(() =>{
 
-    let $messageFrom = $('#send-message');
+    let $messageForm = $('#message-form');
     let $messageBox = $('#message');
     let $chat = $('#chat');
+    
 
-    $messageFrom.submit((e) =>{
+    $messageForm.submit((e) =>{
         e.preventDefault();
-        socket.emit('send_message', $messageBox.val());
+        socket.emit('send_message', data)
         $messageBox.val('');
     })
 
     socket.on('new_message', (data) =>{
         $chat.append(
             $('<h6>').text(
-                `${data}`
-            )
-        )
-    })
-
-    socket.on('your_message', (data) =>{
-        $chat.append(
-            $('<h6>').css("float":"right").text(
                 `${data}`
             )
         )
