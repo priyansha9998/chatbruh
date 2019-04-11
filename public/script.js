@@ -43,11 +43,7 @@ $(() =>{
                 .text(
                     `${data.username} : ${data.message}`
                 )
-            )
-            
-        }
-        
+            )   
+        }  
     })
-
-
 })

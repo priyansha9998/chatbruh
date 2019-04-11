@@ -6,8 +6,6 @@ const socketio = require('socket.io')
 
 const io = socketio(server)
 
-
-
 io.on('connection', (socket) => {
     console.log('Socket connected ' + socket.id)
 
@@ -16,11 +14,9 @@ io.on('connection', (socket) => {
         io.emit('new_message', {
             username : data.username,
             message : data.message
-        })
-        
+        })      
     })
 })
-
 app.use('/', express.static(__dirname + '/public'))
 
 server.listen(3033, () => {
