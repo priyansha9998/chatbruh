@@ -1,0 +1,29 @@
+    const socket = io()
+
+    socket.on('connect', () => {
+        console.log('Socket created ' + socket.id)
+    })
+
+$(() =>{
+
+    let $messageFrom = $('#send-message');
+    let $messageBox = $('#message');
+    let $chat = $('#chat');
+
+    $messageFrom.submit((e) =>{
+        e.preventDefault();
+        socket.emit('send_message', $messageBox.val());
+        $messageBox.val('');
+    })
+
+    socket.on('new_message', (data) =>{
+        $chat.append(
+            $('<h6>').text(
+                `${data}`
+            )
+        )
+    })
+
+
+
+})
