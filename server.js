@@ -13,7 +13,7 @@ let rooms = {}
 
 //Connecting the socket
 io.on('connection', (socket) => {
-//The socket is now connected succesfully
+    //The socket is now connected succesfully
     console.log('Socket connected ' + socket.id)
 
     socket.on('adduser', (username) => {

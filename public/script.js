@@ -43,6 +43,8 @@ $(() =>{
     })
     
     socket.on('new_message', (data) =>{
+
+        $chat.scrollTop($chat[0].scrollHeight);
         //when the server send the message to be displayed
         if(data.username == $username.val())
         {   
@@ -134,6 +136,6 @@ $(() =>{
             ) 
             }
         )    
-    })
+})
     
 
