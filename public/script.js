@@ -6,10 +6,11 @@
     })
 
 $(() =>{
-    let $roomFrom = $('#enter-room');
-    let $messageForm = $('#message-form');
-    let $messageBox = $('#message');
-    let $chat = $('#chat');
+
+    let $roomFrom = $('#enter-room')
+    let $messageForm = $('#message-form')
+    let $messageBox = $('#message')
+    let $chat = $('#chat')
     let $username = $('#username')
     let $room = $('#room')
     let $roomHead = $('#room-head')
