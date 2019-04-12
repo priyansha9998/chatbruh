@@ -32,13 +32,11 @@ io.on('connection', (socket) => {
 		socket.emit('updaterooms', rooms, 'room1');
 	});
 
-
-    //When the user sends a message
-    socket.on('send_message', (data) =>{
+    socket.on('enter_room', (data) =>{
         socket.username = data.username
         socket.room = data.room
         rooms[data.room] = data.room
-        users[data.username] = data.username
+        users[data.room] = data.username
         socket.join(socket.room)
         socket.emit('updatemychat', {
             room : socket.room
@@ -46,11 +44,15 @@ io.on('connection', (socket) => {
         socket.broadcast.to(socket.room).emit('updatechat', {
             username : socket.username
         });
+        
+    })
+
+    //When the user sends a message
+    socket.on('send_message', (data) =>{
         //broadcast.emit('new message', data); send to everybody but me
         //send the mesage to the clients
         io.in(socket.room).emit('new_message', {
-            username : data.username,
-            room : data.room,
+            username : socket.username,
             message : data.message
         });
     })

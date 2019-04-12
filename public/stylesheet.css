@@ -1,5 +1,6 @@
 #chat {
     height: 500px;
-    background-color: slategray;
+    background-color: slategray; 
+    overflow-y: auto;
 }
 
