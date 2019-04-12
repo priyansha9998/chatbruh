@@ -6,16 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="/socket.io/socket.io.js"></script>
     <link rel="stylesheet" href="stylesheet.css">
     <script src="script.js"></script>
 </head>
 <body>
+    <div id="room-head" style="align-content: center">
+    </div>
     <div id="chat"></div>
-    <form id="message-form">
-        <input id="username">
-        <input size="45" id="message">
-        <input type="submit">
-    </form>
+    <div>
+        <form id="message-form">
+            <input placeholder="Enter Username" size="35" id="username">
+            <input placeholder="Enter Room Name" size="45" id="room">
+            <input size="55" placeholder="Enter Your Message" id="message">
+            <input type="submit">   
+        </form>
+    </div>
+    
 </body>
 </html>
