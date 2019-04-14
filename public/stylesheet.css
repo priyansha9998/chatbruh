@@ -1,6 +1,39 @@
 #chat {
-    height: 500px;
-    background-color: slategray; 
+    height: 475px;
+    background-color: #775673; 
     overflow-y: auto;
+    display: none;
 }
 
+#enter-room {
+    display: none
+}
+
+#message-form {
+    display: none
+}
+
+body {
+    background-image: url(bg.png)
+}
+
+#heading {
+    text-align: center;
+    font: bolder x-large;
+    border-bottom: 4px darkblue solid;
+    color: wheat;
+    background-image: url(images.jpg);
+    font-family: cursive;
+}
+
+#sin {
+    color: #451859;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+#room-head {
+
+    color: mediumvioletred;
+    font-family: cursive
+
+}

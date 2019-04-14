@@ -6,6 +6,9 @@ const socketio = require('socket.io')
 
 const io = socketio(server)
 
+const { Users } = require('./db')
+
+
 //users that are currently present to chat
 let users = {}
 //rooms currently in use
@@ -16,36 +19,62 @@ io.on('connection', (socket) => {
     //The socket is now connected succesfully
     console.log('Socket connected ' + socket.id)
 
-    socket.on('adduser', (username) => {
-		// store the username in the socket session for this client
-		socket.username = username;
-		// store the room name in the socket session for this client
-		socket.room = 'room1';
-		// add the client's username to the global list
-		usernames[username] = username;
-		// send client to room 1
-		socket.join('room1');
-		// echo to client they've connected
-		socket.emit('updatechat', 'SERVER', 'you have connected to room1');
-		// echo to room 1 that a person has connected to their room
-		socket.broadcast.to('room1').emit('updatechat', 'SERVER', username + ' has connected to this room');
-		socket.emit('updaterooms', rooms, 'room1');
-	});
+    socket.on('new_signup', (data) => {
+        Users.create({
+            username : data.username,
+            firstName : data.firstName,
+            lastName : data.lastName,
+            password : data.password,
+        }).then((user) => {
+            
+                socket.emit('signup_done', {
+                username : user.username
+                })
+        })
+        
+        })
+
+       
 
     socket.on('enter_room', (data) =>{
-        socket.username = data.username
-        socket.room = data.room
-        rooms[data.room] = data.room
-        users[data.room] = data.username
-        socket.join(socket.room)
-        socket.emit('updatemychat', {
-            room : socket.room
+        Users.findOne({
+            where: {
+                username : data.username,
+            }
+        }).then((user) =>{
+            if(!user) { 
+                socket.emit('nouser',{
+                    username : data.username
+                })
+            }
+            if(user.password !== data.password) {
+                socket.emit('inpassword', {
+                    room : data.room
+                })
+            }
+            else {
+                socket.emit('login', {
+                    username : data.username
+                })
+                socket.username = data.username
+                socket.room = data.room
+                rooms[data.room] = data.room
+                users[data.room] = data.username
+                socket.join(socket.room)
+                socket.emit('updatemychat', {
+                    room : socket.room
+                })
+                socket.broadcast.to(socket.room).emit('updatechat', {
+                    username : socket.username
+                })
+            }
         })
-        socket.broadcast.to(socket.room).emit('updatechat', {
-            username : socket.username
-        });
+        
         
     })
+    
+    
+
 
     //When the user sends a message
     socket.on('send_message', (data) =>{
@@ -56,7 +85,10 @@ io.on('connection', (socket) => {
             message : data.message
         });
     })
-})
+
+})    
+
+
 //use all the files in the public folder
 app.use('/', express.static(__dirname + '/public'))
 

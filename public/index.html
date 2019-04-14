@@ -12,22 +12,65 @@
     <script src="script.js"></script>
 </head>
 <body>
-    <div id="room-head" style="align-content: center">
-    </div>
-    <div id="chat"></div>
-    <div>
-        <form id="enter-room">
-            <input placeholder="Enter Username" size="35" id="username">
+    <div id="heading"><h1>CHAT BRUH</h1></div>
+    <div class="container">
+        <div id="room-head" style="align-content: center">
+        </div>
+        <div id="chat"></div>
+        
+        <div id="signup-div" style="text-align: center">
+            <form id="signup">
+                <br>
+                <br>
+                <h2 id="sin">SIGN-UP</h2>
+                <br>
+                <input placeholder="Enter your First Name" size="35" id="firstName">
+                <br>
+                <br>
+                <input placeholder="Enter your Last Name" size="35" id="lastName">
+                <br>
+                <br>
+                <input placeholder="Enter Username" size="35" id="usernames">
+                <br>
+                <br>
+                <input placeholder="Enter Password" size="35" id="password" type="password">
+                <br>
+                <br>
+
+                <input type="submit">
+            </form>
+        </div>
+        <br>
+        <div id="login-sure" style="text-align: center; color: #451859">
+            <h3>If you have an account already, LOGIN DIRECTLY!</h3>
+            <h5> (Click on the button below)</h5>
+            <button id="loginb">Login</button>
+        </div>
+        <div style="text-align: center">
+            <form id="enter-room">
+            <br>
+            <br>
+            <h2>LOGIN</h2>
+            <br>
+            <br>        
+            <input placeholder="Enter Username" size="45" id="username">
+            <br>
+            <br>
+            <input placeholder="Enter Password" size="45" id="userPass" type="password">
+            <br>
+            <br>
             <input placeholder="Enter Room Name" size="45" id="room">
+            <br>
+            <br>
             <input type="submit">
         </form>
-    </div>
-    <div>
-        <form id="message-form">
-            <input size="55" placeholder="Enter Your Message" id="message">
-            <input type="submit">   
-        </form>
-    </div>
-    
+        </div>
+        <div>
+            <form id="message-form">
+                <input size="135" placeholder="Enter Your Message" id="message">
+                <input type="submit"> 
+            </form>
+        </div>
+    </div>    
 </body>
 </html>
