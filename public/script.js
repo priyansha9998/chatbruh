@@ -183,6 +183,7 @@ socket.on('updatechat', (data) => {
                     $('<div>').addClass("col").append(
                         $('<h5>').css({
                             "background-color" : "white",
+                            "text-align" : "center",
                         })
                         .text(
                                 `${data.username} has entered the room`
@@ -216,6 +217,7 @@ socket.on('updatemychat', (data) => {
                     $('<div>').addClass("col").append(
                         $('<h5>').css({
                             "background-color" : "white",
+                            "text-align" : "center",
                         })
                         .text(
                                 `You have entered room ${data.room}`

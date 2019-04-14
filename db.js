@@ -1,14 +1,20 @@
 const Sequelize = require('sequelize');
+let db;
+if (process.env.DATABASE_URL) {
+    db = new Sequelize(process.env.DATABASE_URL)
+} else {
+    db = new Sequelize(
+        'chatbruhlogin',
+        'userdb',
+        'userdb',
+        {
+            dialect : 'mysql',
+            host : 'localhost'
+        }
+    )
+}
 
-const db = new Sequelize(
-    'chatbruhlogin',
-    'userdb',
-    'userdb',
-    {
-        dialect : 'mysql',
-        host : 'localhost'
-    }
-)
+
 
 const Users = db.define('users',{
     username :{

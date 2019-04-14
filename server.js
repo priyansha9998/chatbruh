@@ -7,8 +7,7 @@ const socketio = require('socket.io')
 const io = socketio(server)
 
 const { Users } = require('./db')
-
-
+ const PORT = process.env.PORT||3033
 //users that are currently present to chat
 let users = {}
 //rooms currently in use
@@ -93,7 +92,7 @@ io.on('connection', (socket) => {
 app.use('/', express.static(__dirname + '/public'))
 
 //listen the client
-server.listen(3033, () => {
-    console.log('Server started on http://localhost:3033')
+server.listen(PORT, () => {
+    console.log(`Server started on http://localhost:${PORT}`)
   })
 
