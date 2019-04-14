@@ -5,7 +5,7 @@
 ### The project is an easy to clone and run project.
 
 ## Prerequisites
-###Once you have cloned the repository, Switch to the terminal of the folder and type the following command.
+### Once you have cloned the repository, Switch to the terminal of the folder and type the following command.
 ```
 npm install
 ```
